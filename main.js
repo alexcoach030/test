@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.id = home.id;
             this.address = home.address;
             this.getType(home.type);
-            this.img = `img/${this.id}.jpg`;
+            this.img = `img/${this.id}`;
         }
 
         getType(type){
@@ -69,7 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
         render(){
             return `<div class="homes-item" data-type="${this.type.charAt(0)}" data-name="${this.title}">
                          <a href="details/${this.id}">
-                            <img src="${this.img}" alt="Some img">
+                            <picture>
+                                <source type="image/webp" srcset="${this.img}.webp 1x, ${this.img}x2.webp 2x">
+                                <img src="${this.img}.jpg" srcset="${this.img}x2.jpg 2x" alt="home img">
+                            </picture>
+                            
                             <div class="homes-type" data-type="${this.type.charAt(0)}">${this.type}</div>
                             <div class="homes-descr">
                                 <h3 class="homes-descr_name">${this.title}</h3>
