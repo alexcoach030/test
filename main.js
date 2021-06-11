@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     class HomesList {
         constructor(container = '.homes'){
             this.container = container;
-            this.filtered = this.filter();
             this.homes = [];//массив домов
             this.allHomes = [];//массив объектов
             this._getProducts()
@@ -33,27 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
 
-        filter (){
-            const input = document.querySelector('#filter');
+        filter(){
+            let input = document.querySelector('#filter');
             input.addEventListener('keyup', function (){
                 let filter = input.value.toLowerCase();
+                let filterItems = document.querySelectorAll('.homes-item');
+                if (filter.length>2) {
+                    filterItems.forEach(item=> {
+                        if (item.dataset.name.toLowerCase().indexOf(filter) > -1){
+                            item.style.display = '';
+                        }else {
+                            item.style.display = 'none';
+                        }
+                    })
+                }else filterItems.forEach(item=>item.style.display = '');
             });
         }
-
-        /*filterHomes(){
-            let filter = input.value.toLowerCase();
-            if (filter.length>2) {
-                let filterItems = document.querySelector ('.homes-item');
-                filterItems.forEach(item=> {
-                    if (item.title.toLowerCase().indexOf(filter) > -1){
-                        item.style.display = '';
-                    }else {
-                        item.style.display = 'none';
-                    }
-                })
-            }
-
-        }*/
     }
 
     class HomeItem {
@@ -62,21 +56,29 @@ document.addEventListener('DOMContentLoaded', () => {
             this.price = home.price;
             this.id = home.id;
             this.address = home.address;
-            this.type = home.type;
+            this.getType(home.type);
             this.img = `img/${this.id}.jpg`;
         }
+
+        getType(type){
+            if (type === "IndependentLiving"){
+                return this.type = 'Independent living';
+            } else return this.type = 'Restaurant & Support available';
+        }
+
         render(){
-            return `<a href="#">
-                         <div class="homes-item" data-name="${this.title}" data-id="${this.id}">
+            return `<div class="homes-item" data-type="${this.type.charAt(0)}" data-name="${this.title}">
+                         <a href="details/${this.id}">
                             <img src="${this.img}" alt="Some img">
+                            <div class="homes-type" data-type="${this.type.charAt(0)}">${this.type}</div>
                             <div class="homes-descr">
                                 <h3 class="homes-descr_name">${this.title}</h3>
                                 <p>${this.address}</p>
                                 <p>New Properties for Sale from <strong>&pound;${this.price}</strong></p>
                                 <p class="homes-descr_small">Shared Ownership Available</p>
                             </div>
-                         </div>
-                    </a>`
+                         </a>
+                    </div>`
         }
     }
 

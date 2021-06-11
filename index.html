@@ -8,20 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="header">
+<header class="header development-header">
     <section class="wrap header-wrap"><h1 class="header-title">Our Latest Developments</h1></section>
 </header>
 <main>
     <div class="container">
-        <form>
-            <label for="filter">Filter</label>
-            <input class="search" type="text" id="filter">
-        </form>
         <div class="wrap homes-wrap">
+            <form>
+                <label class="homes-filter" for="filter">Filter</label>
+                <input class="search homes-search" type="text" id="filter">
+            </form>
             <div class="homes"></div>
+            <div class="development-button"><button class="button homes-button">See more <svg width="7" height="17" viewBox="0 0 7 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Chevron" d="M1 1L5.043 8.41667L1 15.8333" stroke="#363636" stroke-width="2" stroke-linecap="round"/>
+            </svg></button>
+            </div>
         </div>
     </div>
-    <button class=""></button>
+
 </main>
 
 <script src="main.js"></script>

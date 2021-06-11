@@ -5,6 +5,12 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
+:active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
+}
 h1,
 h2,
 h3,
@@ -31,12 +37,17 @@ p {
   color: #45852D;
 }
 .homes {
+  margin-bottom: 60px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .homes a {
   text-decoration: none;
+  cursor: pointer;
+}
+.homes a:hover {
+  outline: black;
 }
 .homes-wrap {
   margin: 0 auto;
@@ -48,6 +59,31 @@ p {
   background-color: #F8F8F8;
   margin-bottom: 38px;
   text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.homes-item [data-type="I"] {
+  background-color: #006F79;
+  width: 134px;
+}
+.homes-item [data-type="R"] {
+  background-color: #EC6608;
+  width: 204px;
+}
+.homes-item:hover {
+  outline: 2px solid #D8D8D8 !important;
+  cursor: pointer;
+}
+.homes-item .homes-type {
+  height: 30px;
+  position: absolute;
+  top: 198px;
+  right: 0;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  color: #FFFFFF;
 }
 .homes-descr {
   margin: 15px 20px;
@@ -64,5 +100,66 @@ p {
 .homes-descr_name {
   font-size: 20px;
   line-height: 27px;
+}
+.homes-filter {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  color: #363636;
+}
+.search {
+  width: 418px;
+  height: 50px;
+  border: 1px solid #D8D8D8;
+  border-radius: 25px;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0 20px;
+}
+.homes-search {
+  margin-bottom: 45px;
+}
+.development-header {
+  margin-bottom: 40px;
+}
+.button {
+  width: 150px;
+  height: 50px;
+  border: 1px solid #D8D8D8;
+  border-radius: 25px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+.homes-button {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 35px;
+  letter-spacing: -0.3px;
+  color: #363636;
+}
+.homes-button svg {
+  margin-left: 5px;
+  margin-bottom: -3px;
+}
+.development-button {
+  text-align: center;
+  margin-bottom: 77px;
+}
+@media (max-width: 1199px) {
+  .homes {
+    justify-content: space-around;
+  }
+  .homes-wrap form {
+    text-align: center;
+  }
+}
+@media (max-width: 767px) {
+  .homes {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 /*# sourceMappingURL=style.css.map */
